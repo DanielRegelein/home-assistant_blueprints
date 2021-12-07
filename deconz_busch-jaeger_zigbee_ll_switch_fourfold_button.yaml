@@ -1,7 +1,7 @@
 blueprint:
-  name: deCONZ - Busch Jaeger ZigBee Light Link (4 buttons)
+  name: deCONZ - Busch Jaeger ZigBee Light Link Surface-mounted installation (4 buttons)
   description: >
-    Busch Jaeger ZigBee Light Link (4 buttons)
+    Busch Jaeger ZigBee Light Link Surface-mounted installation (4 buttons)
   domain: automation
   source_url: https://github.com/DanielRegelein/home-assistant_blueprints/blob/main/deconz_busch-jaeger_zigbee_ll_switch_fourfold_button.yaml
   input:
