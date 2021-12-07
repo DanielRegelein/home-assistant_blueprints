@@ -1,0 +1,83 @@
+blueprint:
+  name: deCONZ - Busch Jaeger ZigBee Light Link (4 buttons)
+  description: >
+    Busch Jaeger ZigBee Light Link (4 buttons). The first row is used to control the wired circuit, the second row can be programmed using this blueprint.
+  domain: automation
+  source_url: https://github.com/DanielRegelein/home-assistant_blueprints/blob/main/deconz_busch-jaeger_zigbee_ll_wired_switch_fourfold_button.yaml
+  input:
+    remote:
+      name: Remote
+      description: Senic remote
+      selector:
+        device:
+          integration: deconz
+          manufacturer: Busch-Jaeger
+          model: RM01
+    button_three_single_press:
+      name: 3 button - Single press
+      description: Action to run on a single press of the button 3 (down left)
+      default: []
+      selector:
+        action: {}
+    button_three_hold_in:
+      name: 3 button - hold in
+      description: Action to run when button 3 (down left) held in
+      default: []
+      selector:
+        action: {}
+    button_three_hold_release:
+      name: 3 button - Hold release
+      description:  Action to run when button 3 (down left) was held in and released
+      default: []
+      selector:
+        action: {}
+    button_four_single_press:
+      name: 4 button - Single press
+      description: Action to run on a single press of the button 4 (down right)
+      default: []
+      selector:
+        action: {}
+    button_four_hold_in:
+      name: 4 button - hold in
+      description: Action to run when button 4 (down right) held in
+      default: []
+      selector:
+        action: {}
+    button_four_hold_release:
+      name: 4 button - Hold release
+      description: Action to run when button 4 (down right) was held in and released
+      default: []
+      selector:
+        action: {}
+        
+mode: restart
+max_exceeded: silent
+
+trigger:
+- platform: event
+  event_type: deconz_event
+  event_data:
+    device_id: !input 'remote'
+
+action:
+- variables:
+    event: '{{ trigger.event.data.event }}'
+- choose:
+  - conditions:
+    - '{{ event == 3001 }}'
+    sequence: !input 'button_three_hold_in'
+  - conditions:
+    - '{{ event == 3002 }}'
+    sequence: !input 'button_three_single_press'
+  - conditions:
+    - '{{ event == 3003 }}'
+    sequence: !input 'button_three_hold_release'
+  - conditions:
+    - '{{ event == 4001 }}'
+    sequence: !input 'button_four_hold_in'
+  - conditions:
+    - '{{ event == 4002 }}'
+    sequence: !input 'button_four_single_press'
+  - conditions:
+    - '{{ event == 4003 }}'
+    sequence: !input 'button_four_hold_release'
