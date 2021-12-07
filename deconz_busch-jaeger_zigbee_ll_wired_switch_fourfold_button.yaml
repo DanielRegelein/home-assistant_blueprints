@@ -1,7 +1,7 @@
 blueprint:
-  name: deCONZ - Busch Jaeger ZigBee Light Link (4 buttons)
+  name: deCONZ - Busch Jaeger ZigBee Light Link Flush-mounted installation (4 buttons)
   description: >
-    Busch Jaeger ZigBee Light Link (4 buttons). The first row is used to control the wired circuit, the second row can be programmed using this blueprint.
+    Busch Jaeger ZigBee Light Link Flush-mounted installation (4 buttons). The first row is used to control the wired circuit, the second row can be programmed using this blueprint.
   domain: automation
   source_url: https://github.com/DanielRegelein/home-assistant_blueprints/blob/main/deconz_busch-jaeger_zigbee_ll_wired_switch_fourfold_button.yaml
   input:
