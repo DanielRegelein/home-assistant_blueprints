@@ -207,7 +207,7 @@ action:
   - conditions:
     - '{{ event == 4003 }}'
     sequence: !input 'button_four_hold_release'
-   - conditions:
+  - conditions:
     - '{{ event == 5001 }}'
     sequence: !input 'button_five_hold_in'
   - conditions:
@@ -234,7 +234,7 @@ action:
   - conditions:
     - '{{ event == 7003 }}'
     sequence: !input 'button_seven_hold_release'
-    - conditions:
+  - conditions:
     - '{{ event == 8001 }}'
     sequence: !input 'button_eight_hold_in'
   - conditions:
