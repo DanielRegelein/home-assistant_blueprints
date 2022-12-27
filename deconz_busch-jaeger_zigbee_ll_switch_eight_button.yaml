@@ -121,7 +121,7 @@ blueprint:
       default: []
       selector:
         action: {}           
-     button_seven_single_press:
+    button_seven_single_press:
       name: 7 button - Single press
       description: Action to run on a single press of the button 7 (down left)
       default: []
