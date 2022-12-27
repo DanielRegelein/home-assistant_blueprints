@@ -1,13 +1,13 @@
 blueprint:
-  name: deCONZ - Busch Jaeger ZigBee Light Link Surface-mounted switch (8 buttons)
+  name: deCONZ - Busch Jaeger ZigBee Light Link Surface-mounted switch (4 buttons)
   description: >
-    Busch Jaeger ZigBee Light Link Surface-mounted switch (8 buttons)
+    Busch Jaeger ZigBee Light Link Surface-mounted switch (4 buttons)
   domain: automation
-  source_url: https://github.com/DanielRegelein/home-assistant_blueprints/blob/main/deconz_busch-jaeger_zigbee_ll_switch_eight_button.yaml
+  source_url: https://github.com/DanielRegelein/home-assistant_blueprints/blob/main/deconz_busch-jaeger_zigbee_ll_switch_fourfold_button.yaml
   input:
     remote:
       name: Remote
-      description: Busch Jaeger ZigBeeLightLink Surface-mounted switch
+      description: Senic remote
       selector:
         device:
           integration: deconz
@@ -57,106 +57,34 @@ blueprint:
         action: {}
     button_three_hold_in:
       name: 3 button - hold in
-      description: Action to run when button 3 (2nd up left) held in
+      description: Action to run when button 3 (down left) held in
       default: []
       selector:
         action: {}
     button_three_hold_release:
       name: 3 button - Hold release
-      description:  Action to run when button 3 (2nd up left) was held in and released
+      description:  Action to run when button 3 (down left) was held in and released
       default: []
       selector:
         action: {}
     button_four_single_press:
       name: 4 button - Single press
-      description: Action to run on a single press of the button 4 (2nd up right)
+      description: Action to run on a single press of the button 4 (down right)
       default: []
       selector:
         action: {}
     button_four_hold_in:
       name: 4 button - hold in
-      description: Action to run when button 4 (2nd up right) held in
+      description: Action to run when button 4 (down right) held in
       default: []
       selector:
         action: {}
     button_four_hold_release:
       name: 4 button - Hold release
-      description: Action to run when button 4 (2nd up right) was held in and released
+      description: Action to run when button 4 (down right) was held in and released
       default: []
       selector:
         action: {}
-    button_five_single_press:
-      name: 5 button - Single press
-      description: Action to run on a single press of the button 5 (2nd down left)
-      default: []
-      selector:
-        action: {}
-    button_five_hold_in:
-      name: 5 button - Hold in
-      description: Action to run when button 5 (2nd down left) held in
-      default: []
-      selector:
-        action: {}
-    button_five_hold_release:
-      name: 5 button - Hold release
-      description:  Action to run when button 5 (2nd down left) was held in and released
-      default: []
-      selector:
-        action: {}        
-    button_six_single_press:
-      name: 6 button - Single press
-      description: Action to run on a single press of the button 6 (2nd down right)
-      default: []
-      selector:
-        action: {}
-    button_six_hold_in:
-      name: 6 button - Hold in
-      description: Action to run when button 6 (2nd down right) held in
-      default: []
-      selector:
-        action: {}
-    button_six_hold_release:
-      name: 6 button - Hold release
-      description:  Action to run when button 6 (2nd down right) was held in and released
-      default: []
-      selector:
-        action: {}           
-     button_seven_single_press:
-      name: 7 button - Single press
-      description: Action to run on a single press of the button 7 (down left)
-      default: []
-      selector:
-        action: {}
-    button_seven_hold_in:
-      name: 7 button - Hold in
-      description: Action to run when button 7 (down left) held in
-      default: []
-      selector:
-        action: {}
-    button_seven_hold_release:
-      name: 7 button - Hold release
-      description:  Action to run when button 7 (down left) was held in and released
-      default: []
-      selector:
-        action: {}         
-     button_eight_single_press:
-      name: 8 button - Single press
-      description: Action to run on a single press of the button 8 (down right)
-      default: []
-      selector:
-        action: {}
-    button_eight_hold_in:
-      name: 8 button - Hold in
-      description: Action to run when button 8 (down right) held in
-      default: []
-      selector:
-        action: {}
-    button_eight_hold_release:
-      name: 8 button - Hold release
-      description:  Action to run when button 8 (down right) was held in and released
-      default: []
-      selector:
-        action: {}    
         
 mode: restart
 max_exceeded: silent
@@ -207,39 +135,3 @@ action:
   - conditions:
     - '{{ event == 4003 }}'
     sequence: !input 'button_four_hold_release'
-   - conditions:
-    - '{{ event == 5001 }}'
-    sequence: !input 'button_five_hold_in'
-  - conditions:
-    - '{{ event == 5002 }}'
-    sequence: !input 'button_five_single_press'
-  - conditions:
-    - '{{ event == 5003 }}'
-    sequence: !input 'button_five_hold_release'
-  - conditions:
-    - '{{ event == 6001 }}'
-    sequence: !input 'button_six_hold_in'
-  - conditions:
-    - '{{ event == 6002 }}'
-    sequence: !input 'button_six_single_press'
-  - conditions:
-    - '{{ event == 6003 }}'
-    sequence: !input 'button_six_hold_release'
-   - conditions:
-    - '{{ event == 7001 }}'
-    sequence: !input 'button_seven_hold_in'
-  - conditions:
-    - '{{ event == 7002 }}'
-    sequence: !input 'button_seven_single_press'
-  - conditions:
-    - '{{ event == 7003 }}'
-    sequence: !input 'button_seven_hold_release'
-    - conditions:
-    - '{{ event == 8001 }}'
-    sequence: !input 'button_eight_hold_in'
-  - conditions:
-    - '{{ event == 8002 }}'
-    sequence: !input 'button_eight_single_press'
-  - conditions:
-    - '{{ event == 8003 }}'
-    sequence: !input 'button_eight_hold_release'
