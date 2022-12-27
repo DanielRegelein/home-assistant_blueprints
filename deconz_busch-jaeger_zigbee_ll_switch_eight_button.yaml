@@ -1,0 +1,137 @@
+blueprint:
+  name: deCONZ - Busch Jaeger ZigBee Light Link Surface-mounted installation (4 buttons)
+  description: >
+    Busch Jaeger ZigBee Light Link Surface-mounted installation (4 buttons)
+  domain: automation
+  source_url: https://github.com/DanielRegelein/home-assistant_blueprints/blob/main/deconz_busch-jaeger_zigbee_ll_switch_eight_button.yaml
+  input:
+    remote:
+      name: Remote
+      description: Senic remote
+      selector:
+        device:
+          integration: deconz
+          manufacturer: Busch-Jaeger
+          model: RB01
+    button_one_single_press:
+      name: 1 button - Single press
+      description: Action to run on a single press of the button 1 (up left)
+      default: []
+      selector:
+        action: {}
+    button_one_hold_in:
+      name: 1 button - Hold in
+      description: Action to run when button 1 (up left) held in
+      default: []
+      selector:
+        action: {}
+    button_one_hold_release:
+      name: 1 button - Hold release
+      description:  Action to run when button 1 (up left)was held in and released
+      default: []
+      selector:
+        action: {}
+    button_two_single_press:
+      name: 2 button - Single press
+      description: Action to run on a single press of the button 2 (up right)
+      default: []
+      selector:
+        action: {}
+    button_two_hold_in:
+      name: 2 button - hold in
+      description: Action to run when button 2 (up right) held in
+      default: []
+      selector:
+        action: {}
+    button_two_hold_release:
+      name: 2 button - Hold release
+      description:  Action to run when button 2 (up right) was held in and released
+      default: []
+      selector:
+        action: {}
+    button_three_single_press:
+      name: 3 button - Single press
+      description: Action to run on a single press of the button 3 (down left)
+      default: []
+      selector:
+        action: {}
+    button_three_hold_in:
+      name: 3 button - hold in
+      description: Action to run when button 3 (down left) held in
+      default: []
+      selector:
+        action: {}
+    button_three_hold_release:
+      name: 3 button - Hold release
+      description:  Action to run when button 3 (down left) was held in and released
+      default: []
+      selector:
+        action: {}
+    button_four_single_press:
+      name: 4 button - Single press
+      description: Action to run on a single press of the button 4 (down right)
+      default: []
+      selector:
+        action: {}
+    button_four_hold_in:
+      name: 4 button - hold in
+      description: Action to run when button 4 (down right) held in
+      default: []
+      selector:
+        action: {}
+    button_four_hold_release:
+      name: 4 button - Hold release
+      description: Action to run when button 4 (down right) was held in and released
+      default: []
+      selector:
+        action: {}
+        
+mode: restart
+max_exceeded: silent
+
+trigger:
+- platform: event
+  event_type: deconz_event
+  event_data:
+    device_id: !input 'remote'
+
+action:
+- variables:
+    event: '{{ trigger.event.data.event }}'
+- choose:
+  - conditions:
+    - '{{ event == 1001 }}'
+    sequence: !input 'button_one_hold_in'
+  - conditions:
+    - '{{ event == 1002 }}'
+    sequence: !input 'button_one_single_press'
+  - conditions:
+    - '{{ event == 1003 }}'
+    sequence: !input 'button_one_hold_release'
+  - conditions:
+    - '{{ event == 2001 }}'
+    sequence: !input 'button_two_hold_in'
+  - conditions:
+    - '{{ event == 2002 }}'
+    sequence: !input 'button_two_single_press'
+  - conditions:
+    - '{{ event == 2003 }}'
+    sequence: !input 'button_two_hold_release'
+  - conditions:
+    - '{{ event == 3001 }}'
+    sequence: !input 'button_three_hold_in'
+  - conditions:
+    - '{{ event == 3002 }}'
+    sequence: !input 'button_three_single_press'
+  - conditions:
+    - '{{ event == 3003 }}'
+    sequence: !input 'button_three_hold_release'
+  - conditions:
+    - '{{ event == 4001 }}'
+    sequence: !input 'button_four_hold_in'
+  - conditions:
+    - '{{ event == 4002 }}'
+    sequence: !input 'button_four_single_press'
+  - conditions:
+    - '{{ event == 4003 }}'
+    sequence: !input 'button_four_hold_release'
