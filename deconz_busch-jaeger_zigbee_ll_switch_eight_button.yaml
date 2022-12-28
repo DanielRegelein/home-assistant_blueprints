@@ -1,7 +1,7 @@
 blueprint:
   name: Busch Jaeger ZigBee Light Link Surface-mounted switch (8 buttons)
   description: >
-    deCONZ - Busch Jaeger ZigBee Light Link Surface-mounted switch (8 buttons)
+    Automation for integration of Busch Jaeger ZigBee Light Link Surface-mounted switch with 8 buttons using deCONZ
   domain: automation
   source_url: https://github.com/DanielRegelein/home-assistant_blueprints/blob/main/deconz_busch-jaeger_zigbee_ll_switch_eight_button.yaml
   input:
@@ -225,7 +225,7 @@ action:
   - conditions:
     - '{{ event == 6003 }}'
     sequence: !input 'button_six_hold_release'
-   - conditions:
+  - conditions:
     - '{{ event == 7001 }}'
     sequence: !input 'button_seven_hold_in'
   - conditions:
