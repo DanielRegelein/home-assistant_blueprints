@@ -3,7 +3,7 @@ blueprint:
   description: >
     Automation for integration of Busch Jaeger ZigBee Light Link Surface-mounted eightfold switch using deCONZ
   domain: automation
-  source_url: https://github.com/DanielRegelein/home-assistant_blueprints/blob/main/deconz_busch-jaeger_zigbee_ll_eightfold_switch.yaml
+  source_url: https://github.com/DanielRegelein/home-assistant_blueprints/blob/main/deconz_bj_zbll_eightfold_battery_switch.yaml
   input:
     remote:
       name: Remote
