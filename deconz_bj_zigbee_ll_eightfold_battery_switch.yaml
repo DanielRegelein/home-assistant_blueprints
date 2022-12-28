@@ -1,16 +1,16 @@
 blueprint:
-  name: Busch Jaeger ZigBee Light Link Surface-mounted eightfold switch
+  name: Busch-Jaeger ZigBee Light Link Surface-mounted eightfold switch
   description: >
-    Automation for integration of Busch Jaeger ZigBee Light Link surface-mounted (battery-powered, not wired) eightfold switch using deCONZ
+    Automation for integration of Busch-Jaeger ZigBee Light Link surface-mounted (battery-powered, not wired) eightfold switch using deCONZ
   domain: automation
   source_url: https://github.com/DanielRegelein/home-assistant_blueprints/blob/main/deconz_bj_zigbee_ll_eightfold_battery_switch.yaml
   input:
     remote:
-      name: Remote
-      description: Senic remote
+      name: Device
+      description: Busch-Jaeger ZigBee Light Link surface-mounted eightfold switch (Type 6737/01-84)
       selector:
         device:
-          integration: deconz
+          integration: deCONZ
           manufacturer: Busch-Jaeger
           model: RB01
     button_one_single_press:
