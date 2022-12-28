@@ -7,7 +7,7 @@ blueprint:
   input:
     remote:
       name: Remote
-      description: Busch Jaeger ZigBee Light Link surface-mounted (battery-powered) eightfold switch
+      description: Senic remote
       selector:
         device:
           integration: deconz
